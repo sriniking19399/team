@@ -37,7 +37,7 @@ public class PlayerJpaService implements PlayerRepository {
     @Override
     public Player getPlayerById(int playerId) {
         try {
-            Player player = playerJpaRepository.findById(playerId);
+            Player player = playerJpaRepository.findById(playerId).get();
             return player;
         } catch (Exception e) {
 
@@ -54,7 +54,7 @@ public class PlayerJpaService implements PlayerRepository {
     @Override
     public Player updatePlayer(int playerId, Player player) {
         try {
-            Player newPlayer = playerJpaRepository.findById(playerId);
+            Player newPlayer = playerJpaRepository.findById(playerId).get();
             if (player.getPlayerName() != null) {
                 newPlayer.setPlayerName(player.getPlayerName());
             }
